@@ -10,7 +10,7 @@
       - phyton:
       -phyton-docker:
       when:
-      - ansible_distribution == "ubuntu"
+      - ansible_distribution == "Ubuntu"
      - name: install docker python centos
        yum
          name: phyton-docker
