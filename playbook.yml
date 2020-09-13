@@ -1,6 +1,6 @@
 - host: server
   vars:
-    - image: nhana/docker-ansible.beta
+    - image: nhana/docker-ansible:beta
   tasks:
     - name: install docker python ubuntu
       apt:
