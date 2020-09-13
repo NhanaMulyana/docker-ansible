@@ -1,0 +1,33 @@
+- host: server
+  vars:
+    - image: nhana/docker-ansible.beta
+  tasks:
+    - name: install docker python ubuntu
+      apt:
+        name: "{{ item }}"
+        state: present
+      lopp:
+      - phyton:
+      -phyton-docker:
+      when:
+      - ansible_distribution == "ubuntu"
+     - name: install docker python centos
+       yum
+         name: phyton-docker
+         state: present
+       when:
+       - ansible_distribution == "Centos"
+      - name: pull image docker
+       docker_image:
+         name: "{{ image}}"
+         state: present
+         force: yes
+      - name: create container
+        docker_container:
+         name: container_docker_ansible
+         state: started
+         image: "{{ image }}"
+         recreate: yes
+         published_port:
+         - 8090:80
+     
